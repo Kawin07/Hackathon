@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Problems</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* Search bar styling */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .search-container input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        /* Filter inputs */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .filter-input {
+            width: 150px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: left;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px;
+        }
+        .pagination a {
+            padding: 10px 15px;
+            margin: 5px;
+            text-decoration: none;
+            color: black;
+            background-color: transparent;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .pagination a:hover {
+            background-color: lightblue;
+        }
+        .pagination .disabled {
+            background-color: #ccc;
+            pointer-events: none;
+        }
+        .pagination .active {
+            background-color: #0056b3;
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <!-- Logo Section -->
+            <a href="#home" class="logo-container">
+                <img src="{{ url_for('static', filename='logo1.png') }}" alt="Hackathon Logo" class="logo-img">
+                <div class="logo-text" style="display: flex; flex-direction: column;">
+                    <span class="logo-text-1" style="font-size: 27px; letter-spacing: 5px; line-height: 30px; ">PANIMALAR</span>
+                    <span class="logo-text-2" style=" font-size:14px; letter-spacing: 2px; word-spacing: -4px;">ENGINEERING COLLEGE</span>
+                    <span class="logo-text-3" style="text-align: center; padding-right: 10px; background-color: red;">An Autonomous Institute</span>
+                    <span class="logo-text-4" style="font-size: 9px;">Affiliated To Anna University, Chennai</span>
+                    <span class="logo-text-5" style="text-align: center;">(JAISAKTHI EDUCATIONAL TRUST)</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('index')}}">Home</a></li>
+                <li><a href="{{ url_for('guidelines')}}">Guidelines</a></li>
+                <li><a href="{{ url_for('hackathon')}}">Statements</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="{{ url_for('contactus')}}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Hackathon Problem Statements</h2>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search for any keyword..." onkeyup="filterTable()">
+        </div>
+
+        <!-- Filters (Dropdowns for Domain, Theme, Category) -->
+        <div class="filters">
+            <select id="domainFilter" class="filter-input" onchange="filterTable()">
+                <option value="">Select Domain</option>
+                {% for domain in domains %}
+                    <option value="{{ domain }}">{{ domain }}</option>
+                {% endfor %}
+            </select>
+
+            <select id="themeFilter" class="filter-input" onchange="filterTable()">
+                <option value="">Select Theme</option>
+                {% for theme in themes %}
+                    <option value="{{ theme }}">{{ theme }}</option>
+                {% endfor %}
+            </select>
+
+            <select id="categoryFilter" class="filter-input" onchange="filterTable()">
+                <option value="">Select Category</option>
+                {% for category in categories %}
+                    <option value="{{ category }}">{{ category }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <table id="problemTable">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Problem Title</th>
+                    <th>Domain</th>
+                    <th>Theme</th>
+                    <th>Category</th>
+                    <th>Problem Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem in problems %}
+                <tr>
+                    <td>{{ problem['Category, and a detailed Description for 20 problem statements.'] }}</td>
+                    <td>{{ problem['Column2'] }}</td>
+                    <td>{{ problem['Column3'] }}</td>
+                    <td>{{ problem['Column4'] }}</td>
+                    <td>{{ problem['Column5'] }}</td>
+                    <td>{{ problem['Column6'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if page > 1 %}
+                <a href="{{ url_for('hackathon', page=page-1) }}">⮜</a>
+            {% else %}
+                <a class="disabled">⮜</a>
+            {% endif %}
+
+            {% set total_pages = (total_problems // per_page) + (1 if total_problems % per_page > 0 else 0) %}
+            
+            {% set start_page = page - 2 if page - 2 > 1 else 1 %}
+            {% set end_page = page + 2 if page + 2 < total_pages else total_pages %}
+            
+            {% if start_page > 1 %}
+                <a href="{{ url_for('hackathon', page=1) }}">1</a>
+                {% if start_page > 2 %} <span>...</span> {% endif %}
+            {% endif %}
+            
+            {% for i in range(start_page, end_page + 1) %}
+                {% if i == page %}
+                    <a class="active">{{ i }}</a>
+                {% else %}
+                    <a href="{{ url_for('hackathon', page=i) }}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+            
+            {% if end_page < total_pages %}
+                {% if end_page < total_pages - 1 %} <span>...</span> {% endif %}
+                <a href="{{ url_for('hackathon', page=total_pages) }}">{{ total_pages }}</a>
+            {% endif %}
+            
+            {% if page < total_pages %}
+                <a href="{{ url_for('hackathon', page=page+1) }}">⮞</a>
+            {% else %}
+                <a class="disabled">⮞</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer>
+        <p>Follow Us: <a href="#">Twitter</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a></p>
+        <p>&copy; 2025 Hackathon</p>
+    </footer>
+
+    <script>
+        function filterTable() {
+            let searchQuery = document.getElementById("searchBar").value.toLowerCase();
+            let domainFilter = document.getElementById("domainFilter").value.toLowerCase();
+            let themeFilter = document.getElementById("themeFilter").value.toLowerCase();
+            let categoryFilter = document.getElementById("categoryFilter").value.toLowerCase();
+
+            let table = document.getElementById("problemTable");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                let domain = cells[2].innerText.toLowerCase();
+                let theme = cells[3].innerText.toLowerCase();
+                let category = cells[4].innerText.toLowerCase();
+                let rowText = Array.from(cells).map(cell => cell.innerText.toLowerCase()).join(" ");
+
+                // Check if the row matches the filters and search query
+                if (rowText.includes(searchQuery) && 
+                    (domain.includes(domainFilter) || domainFilter === "") &&
+                    (theme.includes(themeFilter) || themeFilter === "") &&
+                    (category.includes(categoryFilter) || categoryFilter === "")) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join our exciting hackathon and collaborate with the best minds. Register now!">
+    <title>Hackathon Guidelines</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        /* Body and page background */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0; /* Remove default body margin */
+        }
+    
+        /* Guidelines Section Container */
+        .guidelines-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+    
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    
+        /* Guidelines Section Title */
+        .guidelines-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #0d253f;
+            margin-top: 0; /* Remove any unnecessary space at the top of the title */
+            margin-bottom: 40px;
+            padding-top: 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+    
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        /* Hover effect for headings (h3) */
+        .guidelines-content h3 {
+            font-size: 24px;
+            color: #0d253f;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        /* Hover effect - heading color change and underline */
+        .guidelines-content h3:hover {
+            color: #ff6600;
+            text-decoration: underline;
+            transform: translateX(10px);
+        }
+    
+        .guidelines-content h3::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 5px;
+            height: 30px;
+            background-color: #ff6600;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+    
+        /* Hover effect for the line before heading */
+        .guidelines-content h3:hover::before {
+            width: 12px;
+        }
+    
+        /* Paragraph styling */
+        .guidelines-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+    
+        /* Unordered list styling */
+        .guidelines-content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+    
+        .guidelines-content ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            opacity: 0;
+            animation: slideInUp 1s ease-out forwards;
+        }
+    
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    
+        .guidelines-content ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 18px;
+            color: #ff6600;
+        }
+    
+        .guidelines-content p:last-child {
+            margin-bottom: 0;
+        }
+    
+        /* Section Hover Effect */
+        .guidelines-section {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+    
+        .guidelines-section:hover {
+            background-color: #f5f5f5;
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Section Hover Effect - content block */
+        .guidelines-section:hover .guidelines-content {
+            background-color: #f5f5f5;
+        }
+    
+        /* Section Block Styling */
+        .guidelines-section h3 {
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px;
+            background-color: #f4f6f9;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+    
+        /* Remove top padding from guidelines container */
+        .container {
+            padding-top: 0; /* Avoid additional space above the section */
+        }
+    
+        /* Footer adjustments */
+        footer {
+            margin-top: 0; /* Remove margin above the footer */
+            padding-top: 20px;
+        }
+    
+        /* Remove margin at the bottom of the last content section */
+        .guidelines-section:last-child {
+            margin-bottom: 0;
+        }
+    
+        /* Navbar adjustments */
+        nav.navbar {
+            margin-bottom: 0; /* Remove extra space below the navbar */
+        }
+    
+    </style>
+    
+</head>
+
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <!-- Logo Section -->
+        <a href="#home" class="logo-container">
+            <img src="{{ url_for('static', filename='logo1.png') }}" alt="Hackathon Logo" class="logo-img">
+            <div class="logo-text" style="display: flex; flex-direction: column;">
+            <span class="logo-text-1" style="font-size: 27px; letter-spacing: 5px; line-height: 30px;">PANIMALAR</span>
+            <span class="logo-text-2" style=" font-size:14px; letter-spacing: 2px; word-spacing: -4px;">ENGINEERING COLLEGE</span>
+            <span class="logo-text-3" style="text-align: center; padding-right: 10px; background-color: red;">An Autonomous Institute</span>
+            <span class="logo-text-4" style="font-size: 9px;">Affiliated To Anna University, Chennai</span>
+            <span class="logo-text-5" style="text-align: center;">(JAISAKTHI EDUCATIONAL TRUST)</span>
+        </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('index')}}">Home</a></li>
+            <li><a href="{{ url_for('guidelines')}}">Guidelines</a></li>
+            <li><a href="{{ url_for('hackathon')}}">Statements</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="{{ url_for('contactus')}}">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Guidelines Section -->
+    <section id="guidelines">
+        <div class="container">
+            <h2 class="guidelines-title">Hackathon Guidelines</h2>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Eligibility:</h3>
+                    <p>Participation is open to students currently enrolled in PEC EEE.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Team Formation:</h3>
+                    <p>Each team can have 1-4 members. Ensure that all team members' details are accurately entered in the registration form.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Registration Deadline:</h3>
+                    <p>Submit your registration form by Feb 20, 2025. Late entries will not be accepted.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Registration Process:</h3>
+                    <p>Fill in the registration form and choose your preferred domain.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Shortlisting Process:</h3>
+                    <p>Submitted ideas will be reviewed by the TechDivathon panel. Shortlisted participants will receive a confirmation email with further details regarding the TechDivathon.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Hackathon Details:</h3>
+                    <p>The 24-hour TechDivathon will be conducted on-site for shortlisted participants. Bring all required tools and equipment, including laptops, chargers, and any additional items you may need.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Project Development Rules:</h3>
+                    <p>You will have 24 hours to work on your project during the TechDivathon. Originality is key:</p>
+                    <ul>
+                        <li>Projects must be your own creation and not plagiarized.</li>
+                        <li>You may use pre-existing libraries or frameworks, but the final implementation must be unique.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Domain Selection:</h3>
+                    <p>Choose a domain from the given options during registration. Ensure your project aligns with the chosen domain and the problem statement.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>Communication:</h3>
+                    <p>Keep your email active for updates regarding shortlisting and further instructions. All communication regarding the event will be shared via the registered email addresses.</p>
+                </div>
+            </div>
+
+            <div class="guidelines-section">
+                <div class="guidelines-content">
+                    <h3>General Rules:</h3>
+                    <ul>
+                        <li>Originality is mandatory. Plagiarized ideas will lead to disqualification.</li>
+                        <li>Ensure that the domain and problem statement selected during registration are followed throughout the competition.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 10px; margin-bottom: 10px;">By following these guidelines, you can ensure a smooth registration and a fair chance of being shortlisted for the on-site hackathon (Sparkthon).</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Follow Us: <a href="#">Twitter</a> | <a href="#">Instagram</a> | <a href="#">LinkedIn</a></p>
+        <p>&copy; 2025 Hackathon</p>
+    </footer>
+</body>
+
+</html>
